@@ -1162,6 +1162,10 @@ export function globFirst(pattern: string): string {
 export function findFiles(includePattern: string[], excludePattern: string[], workingDir?: string): string[] {
     debug('findFiles include: ' + pattern + ' exclude: ' + excludePattern + ' workingDir: ' + workingDir);
 
+    if (!includePattern || includePattern.length == 0) {
+        return [];
+    }
+
     var pattern = includePattern;
     if (excludePattern && excludePattern.length > 0) {
         excludePattern.forEach(function (ex) {
