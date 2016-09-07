@@ -24,8 +24,7 @@
   },
   "homepage": "https://github.com/Microsoft/vsts-task-lib",
   "dependencies": {
-    "glob": "^6.0.1",
-    "minimatch": "^3.0.0",
+    "globule": "^1.0.0",
     "mockery": "^1.7.0",
     "node-uuid": "^1.4.7",
     "q": "^1.1.2",
@@ -35,6 +34,7 @@
   },
   "devDependencies": {
     "del": "^1.2.0",
+    "globule": "^1.0.0",
     "gulp": "^3.9.0",
     "gulp-mocha": "2.0.0",
     "merge2": "^0.3.6",

@@ -10,6 +10,8 @@ import tcm = require('./taskcommand');
 import trm = require('./toolrunner');
 import vm = require('./vault');
 import semver = require('semver');
+
+let globule = require('globule');
 require('./extensions');
 
 export enum TaskResult {
@@ -1155,6 +1157,23 @@ export function globFirst(pattern: string): string {
     debug('found ' + matches.length + ' matches');
 
     return matches[0];
+}
+
+export function findFiles(includePattern: string[], excludePattern: string[], workingDir?: string): string[] {
+    debug('findFiles include: ' + pattern + ' exclude: ' + excludePattern + ' workingDir: ' + workingDir);
+
+    var pattern = includePattern;
+    if (excludePattern && excludePattern.length > 0) {
+        excludePattern.forEach(function (ex) {
+            pattern.push("!" + ex);
+        });
+    }
+    if (workingDir && workingDir.length > 0) {
+        return globule.find(pattern, { srcBase: workingDir });
+    }
+    else {
+        return globule.find(pattern);
+    }
 }
 
 /**
